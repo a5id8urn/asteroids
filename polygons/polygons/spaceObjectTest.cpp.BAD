@@ -1,0 +1,67 @@
+/*
+@author: Adam Malmberg
+@program: polygons
+@date: 01-23-2021
+@version: 1.0
+program description:
+polygons.cpp : This file contains the 'main' function. Program execution begins and ends there.
+
+*/
+
+#include <iostream>
+#include "spaceObject.h"
+#include <SFML/Graphics.hpp>
+void printValues(SpaceObject obj);
+
+
+int main()
+{
+	SpaceObject asteroid;
+	printValues(asteroid);
+
+	asteroid.setLocation(100, 200);
+	asteroid.setVelocity(1,14);
+	asteroid.setAngle(1);
+	
+	printValues(asteroid);
+
+	//TODO: add more test code.  Lots more test code.
+	sf::RenderWindow window(sf::VideoMode(400, 400), "I am a graphics guru!");
+		sf::CircleShape shape(25.f);
+		shape.setFillColor(sf::Color::Green);
+	
+		while (window.isOpen())
+		{
+			sf::Event event;
+			while (window.pollEvent(event))
+			{
+				if (event.type == sf::Event::Closed)
+					window.close();
+			}
+	
+			window.clear();
+			window.draw(shape);
+			window.display();
+		}
+	
+		return 0;
+}
+
+//get and print to cout all values of the given object
+void printValues(SpaceObject obj) {
+	Point location = obj.getLocation();
+	std::cout << "location: (" << location.x << ',' << location.y << ")\n";
+	
+	Point velocity = obj.getVelocity();
+	std::cout << "velocity: (" << velocity.x << ',' << velocity.y << ")\n";
+
+	double angle = obj.getAngle();
+	std::cout << "angle: (" << angle << ")\n";
+	
+	
+	//TODO: get and print other values
+}
+
+
+
+
